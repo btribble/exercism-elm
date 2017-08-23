@@ -1,8 +1,2 @@
-bob/node_modules
-bob/elm-stuff
-hello-world/node_modules
-hello-world/elm-stuff
-leap/node_modules
-leap/elm-stuff
-raindrops/node_modules
-raindrops/elm-stuff
+**/node_modules/**
+**/elm-stuff/**

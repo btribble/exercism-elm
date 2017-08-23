@@ -1,5 +1,7 @@
 module Bob exposing (..)
+
 import Regex exposing (..)
+
 
 type Comment
     = Silence
@@ -7,23 +9,25 @@ type Comment
     | Question
     | Other
 
-hey: String -> String
-hey phrase =
-  case parsePhrase phrase of
-    Silence  ->
-      "Fine. Be that way!"
 
-    Shouting  ->
-      "Whoa, chill out!"
+hey : String -> String
+hey comment =
+    case parseComment comment of
+        Silence ->
+            "Fine. Be that way!"
 
-    Question  ->
-      "Sure."
+        Shouting ->
+            "Whoa, chill out!"
 
-    _ -> "Whatever."
+        Question ->
+            "Sure."
+
+        Other ->
+            "Whatever."
 
 
-parsePhrase : String -> Comment
-parsePhrase comment =
+parseComment : String -> Comment
+parseComment comment =
     if isSilence comment then
         Silence
     else if isShouting comment then
@@ -40,9 +44,9 @@ isSilence =
 
 
 isShouting : String -> Bool
-isShouting string =
-    contains (regex "[A-Z]") string
-        && not (contains (regex "[a-z]") string)
+isShouting comment =
+    contains (regex "[A-Z]") comment
+        && not (contains (regex "[a-z]") comment)
 
 
 isQuestion : String -> Bool
